@@ -1,0 +1,112 @@
+:root {
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Premium Obsidian Dark & Champagne Gold Palette */
+  --bg-primary: #060607;
+  --bg-secondary: #101012;
+  --bg-glass: rgba(6, 6, 7, 0.75);
+  --color-text: #ECECED;
+  --color-text-muted: #8E9196;
+  
+  --color-gold: #C5A880;
+  --color-gold-dark: #A98C64;
+  --color-gold-light: #DFBA73;
+  --color-gold-glow: rgba(197, 168, 128, 0.08);
+  
+  --color-border: rgba(197, 168, 128, 0.15);
+  --color-border-light: rgba(255, 255, 255, 0.06);
+  
+  /* Contrast Accents (Frosted Dark Card Elements) */
+  --dark-bg: #101012;
+  --dark-bg-card: #18181A;
+  --dark-text: #ECECED;
+  --dark-text-muted: #8E9196;
+  --dark-border: rgba(197, 168, 128, 0.15);
+  
+  /* Base settings */
+  font-size: 16px;
+  line-height: 1.6;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  /* Elegant ambient radial glows + dot matrix grid overlay */
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 90% 50%, rgba(197, 168, 128, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(197, 168, 128, 0.06) 0%, transparent 40%),
+    radial-gradient(rgba(197, 168, 128, 0.08) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 168, 128, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* Root Layout Container - full screen responsive */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+/* Global Grid Layout Helper */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
