@@ -36,7 +36,8 @@ import {
   TestTube,
   Trophy
 } from 'lucide-react'
-import heroImg from './assets/hero.png'
+import heroImg from './assets/TechLOgo-Photoroom.png'
+import techLogo from './assets/TechLOgo-Photoroom.png'
 import './App.css'
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('interview')
   const [activeStep, setActiveStep] = useState(1)
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-  
+
   // Hero Live Visualizer State (rotates tabs automatically)
   const [visualizerTab, setVisualizerTab] = useState('interview')
 
@@ -166,7 +167,7 @@ function App() {
     if (!selectedAnswer) return
     setAnswerSubmitted(true)
     const currentQuestion = quizQuestions[currentQuestionIndex]
-    
+
     if (selectedAnswer === currentQuestion.answer) {
       setIsCorrect(true)
       setScore(prev => prev + 1)
@@ -303,53 +304,7 @@ function App() {
 
           {/* Interactive Live Hub Visualizer */}
           <div className="hero-visual">
-            <div className="visual-glowing-card">
-              <div className="card-mesh"></div>
-              
-              <div className="visualizer-header">
-                <span className="visualizer-status">Live Telemetry Preview</span>
-              </div>
-
-              <div className="visualizer-screens">
-                {visualizerTab === 'interview' && (
-                  <div className="vis-screen fade-in">
-                    <Code className="vis-icon text-gold" size={32} />
-                    <h4>AI Mock Evaluation</h4>
-                    <span className="vis-value">96 / 100</span>
-                    <p>JavaScript code compile match optimal: O(N) complexity verified.</p>
-                  </div>
-                )}
-                {visualizerTab === 'storage' && (
-                  <div className="vis-screen fade-in">
-                    <Cloud className="vis-icon text-gold" size={32} />
-                    <h4>Secure Student Cloud</h4>
-                    <span className="vis-value">14.2 / 50 GB</span>
-                    <div className="vis-bar-container">
-                      <div className="vis-bar-fill" style={{ width: '28.4%' }}></div>
-                    </div>
-                    <p>Free student allocation active with academic domain signup.</p>
-                  </div>
-                )}
-                {visualizerTab === 'gaming' && (
-                  <div className="vis-screen fade-in">
-                    <Gamepad2 className="vis-icon text-gold" size={32} />
-                    <h4>Gamified Trivia Paths</h4>
-                    <span className="vis-value">Level {level}</span>
-                    <div className="vis-bar-container">
-                      <div className="vis-bar-fill" style={{ width: `${(xp / 1000) * 100}%` }}></div>
-                    </div>
-                    <p>Earn XP badges by answering conceptual programming quizzes.</p>
-                  </div>
-                )}
-              </div>
-
-              {/* Mini Navigation Dots */}
-              <div className="vis-dots">
-                <span className={`vis-dot ${visualizerTab === 'interview' ? 'active' : ''}`} onClick={() => setVisualizerTab('interview')}></span>
-                <span className={`vis-dot ${visualizerTab === 'storage' ? 'active' : ''}`} onClick={() => setVisualizerTab('storage')}></span>
-                <span className={`vis-dot ${visualizerTab === 'gaming' ? 'active' : ''}`} onClick={() => setVisualizerTab('gaming')}></span>
-              </div>
-            </div>
+            <img src={techLogo} alt="TechVedha Hero Logo" className="hero-banner-logo" />
           </div>
         </div>
       </section>
@@ -377,7 +332,7 @@ function App() {
             <span className="section-tag">WHO WE ARE</span>
             <h2 className="section-title">A technology product company, by design</h2>
           </div>
-          
+
           <div className="who-grid">
             <div className="description-col">
               <p className="paragraph-large">
@@ -456,7 +411,7 @@ function App() {
               <Code size={18} />
               <span>AI Interview Prep</span>
             </button>
-            
+
             <button
               className={`tab-btn ${activeTab === 'storage' ? 'active' : ''}`}
               onClick={() => setActiveTab('storage')}
@@ -464,7 +419,7 @@ function App() {
               <Cloud size={18} />
               <span>Secure Cloud Storage</span>
             </button>
-            
+
             <button
               className={`tab-btn ${activeTab === 'gaming' ? 'active' : ''}`}
               onClick={() => setActiveTab('gaming')}
@@ -605,7 +560,7 @@ function App() {
                           </div>
                         </div>
                       )}
-                      
+
                       {files.map((file, idx) => (
                         <div className="file-row dark-row" key={idx}>
                           <div className="file-icon"><FileText size={16} className="text-gold" /></div>
@@ -642,7 +597,7 @@ function App() {
                       <Brain size={18} className="text-gold" />
                       <span className="quiz-label">Tech Trivia ({currentQuestionIndex + 1}/{quizQuestions.length})</span>
                     </div>
-                    
+
                     {!quizFinished ? (
                       <>
                         <p className="quiz-question">
@@ -654,11 +609,9 @@ function App() {
                             <button
                               key={opt}
                               onClick={() => handleAnswerClick(opt)}
-                              className={`option-btn dark-option ${selectedAnswer === opt ? 'selected' : ''} ${
-                                answerSubmitted && opt === quizQuestions[currentQuestionIndex].answer ? 'correct' : ''
-                              } ${
-                                answerSubmitted && selectedAnswer === opt && opt !== quizQuestions[currentQuestionIndex].answer ? 'wrong' : ''
-                              }`}
+                              className={`option-btn dark-option ${selectedAnswer === opt ? 'selected' : ''} ${answerSubmitted && opt === quizQuestions[currentQuestionIndex].answer ? 'correct' : ''
+                                } ${answerSubmitted && selectedAnswer === opt && opt !== quizQuestions[currentQuestionIndex].answer ? 'wrong' : ''
+                                }`}
                               disabled={answerSubmitted}
                             >
                               <span>{opt}</span>
@@ -700,8 +653,8 @@ function App() {
                         <p style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#e0e0e0' }}>Your Score: <span className="text-gold" style={{ fontWeight: 'bold' }}>{score} / {quizQuestions.length}</span></p>
                         <p style={{ marginBottom: '1.5rem', color: '#a0a0a0', lineHeight: '1.5' }}>
                           {score === 5 ? "Excellent work! You're a true tech master." :
-                           score >= 3 ? "Good job! You have a solid understanding of these concepts." :
-                           "Keep practicing! Reviewing these concepts will help you improve."}
+                            score >= 3 ? "Good job! You have a solid understanding of these concepts." :
+                              "Keep practicing! Reviewing these concepts will help you improve."}
                         </p>
                         <button className="btn btn-secondary w-full" onClick={resetQuiz}>
                           Restart Quiz
@@ -740,7 +693,7 @@ function App() {
                 <p>Engineering premium client native applications with responsive transitions, clean code guidelines, and beautiful cross-platform styling.</p>
               </div>
             </div>
-            
+
             {/* Card 2: Regular Card */}
             <div className="bento-card">
               <div className="highlight-header">
@@ -958,13 +911,13 @@ function App() {
             {/* Address Box */}
             <div className="address-card">
               <h3>TechVedha LLP</h3>
-              
+
               <div className="address-items">
                 <div className="address-item">
                   <MapPin className="text-gold" size={20} />
                   <span>Mysuru, Karnataka, India</span>
                 </div>
-                
+
                 <div className="address-item">
                   <Phone className="text-gold" size={20} />
                   <span>+91 8495996395</span>
@@ -983,13 +936,13 @@ function App() {
 
             {/* Live Interactive Map focused on Mysuru */}
             <div className="map-card">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124884.81640822606!2d76.55938166567382!3d12.310636270919106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf70381d572ec7%3A0xf1588c42b2eab13b!2sMysuru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
-                width="100%" 
-                height="320" 
-                style={{ border: 0, borderRadius: '12px' }} 
-                allowFullScreen="" 
-                loading="lazy" 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124884.81640822606!2d76.55938166567382!3d12.310636270919106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baf70381d572ec7%3A0xf1588c42b2eab13b!2sMysuru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                width="100%"
+                height="320"
+                style={{ border: 0, borderRadius: '12px' }}
+                allowFullScreen=""
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
@@ -1113,7 +1066,7 @@ function App() {
               <a href="#ecosystem">Secure Cloud Storage</a>
               <a href="#ecosystem">Gamified Learning</a>
             </div>
-            
+
             <div className="footer-links-col">
               <h4>Company</h4>
               <a href="#about">About Us</a>
